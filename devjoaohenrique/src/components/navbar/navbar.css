@@ -1,6 +1,5 @@
 .navbar {
   background-color: #FBFBFB;
-  border-bottom: 1px solid #1F1F1F;
   padding: 0;
   position: fixed;
   top: 0;
@@ -14,8 +13,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  position: relative;
 }
 
 .navbar-brand h1 {
@@ -30,7 +30,7 @@
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  gap: 12rem;
   align-items: center;
 }
 
@@ -38,7 +38,7 @@
   color: #1F1F1F;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
   font-family: 'Arial', sans-serif;
   letter-spacing: 0.5px;
@@ -49,7 +49,82 @@
   opacity: 0.7;
 }
 
-/* Responsive design */
+/* Menu hambúrguer */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #1F1F1F;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(251, 251, 251, 0.98);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-nav-link {
+  color: #1F1F1F;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+
+.mobile-nav-link:hover {
+  background-color: #1F1F1F;
+  color: #FBFBFB;
+}
+
 @media (max-width: 768px) {
   .navbar-container {
     padding: 1rem;
@@ -59,11 +134,17 @@
     font-size: 1rem;
   }
   
-  .navbar-links {
-    gap: 1rem;
+  .desktop-links {
+    display: none;
   }
   
-  .nav-link {
-    font-size: 0.8rem;
+  .hamburger-menu {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-overlay {
+    display: none;
   }
 }

@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Previne scroll horizontal */
+}
+
+html {
+  overflow-x: hidden; /* Previne scroll horizontal */
 }
 
 code {
